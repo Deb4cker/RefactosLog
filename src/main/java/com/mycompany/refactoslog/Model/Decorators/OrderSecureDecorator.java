@@ -1,8 +1,8 @@
 package com.mycompany.refactoslog.Model.Decorators;
 
-public class OrderSecureDecorator extends OrderDecorator implements Decorator {
+public class OrderSecureDecorator extends OrderDecorator{
 
-    public OrderSecureDecorator(Decorator decorator) {
+    public OrderSecureDecorator(OrderDecorator decorator) {
         super(decorator);
     }
 

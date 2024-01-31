@@ -1,6 +1,6 @@
 package com.mycompany.refactoslog.Model.Decorators;
 
-public class OrderExpressDeliveryDecorator extends OrderDecorator {
+public class OrderExpressDeliveryDecorator extends OrderDecorator{
     public OrderExpressDeliveryDecorator(Decorator order){
         super(order);
     }

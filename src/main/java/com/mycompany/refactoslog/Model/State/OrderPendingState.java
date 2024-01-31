@@ -10,7 +10,7 @@ public class OrderPendingState extends  OrderState{
 
     @Override
     public void pendingOrder() {
-        setName("PendingOrder");
+        setName("Pending Order");
     }
 
     @Override
