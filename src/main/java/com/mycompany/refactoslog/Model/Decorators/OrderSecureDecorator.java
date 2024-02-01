@@ -7,12 +7,12 @@ public class OrderSecureDecorator extends OrderDecorator{
     }
 
     @Override
-    public void activeSecure(float price) {
-        super.activeSecure(price + 20);
+    public float calculatePrice() {
+        return super.calculatePrice() + 20;
     }
 
     @Override
-    public void activeExpressDelivery(float price, int time) {
-        super.activeExpressDelivery(price, time);
+    public float calculateTime() {
+        return super.calculateTime();
     }
 }

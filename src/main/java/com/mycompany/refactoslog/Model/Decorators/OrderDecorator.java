@@ -1,20 +1,20 @@
 package com.mycompany.refactoslog.Model.Decorators;
 
-public class OrderDecorator implements Decorator{
+public abstract class OrderDecorator implements Component{
 
-    private final Decorator decorator;
+    private final Component component;
 
-    public OrderDecorator(Decorator decorator){
-        this.decorator = decorator;
+    public OrderDecorator(Component component){
+        this.component = component;
     }
 
     @Override
-    public void activeSecure(float price) {
-        decorator.activeSecure(price);
+    public float calculatePrice() {
+        return component.calculatePrice();
     }
 
     @Override
-    public void activeExpressDelivery(float price, int time) {
-        decorator.activeExpressDelivery(price, time);
+    public float calculateTime() {
+        return component.calculateTime();
     }
 }

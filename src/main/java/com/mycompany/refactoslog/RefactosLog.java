@@ -21,19 +21,18 @@ public class RefactosLog {
         User user1 = new User("John", "john@example.com", "password", "12345678901");
         User user2 = new User("Jane", "jane@example.com", "password123", "9876543210");
 
-        Address address2 = new Address("456 Elm St", "City", "State", "54321", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user2);
-        Address address1 = new Address("123 Main St", "City", "State", "12345", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user1);
+        Address address1 = new Address("123 Main St", "City", "State", "12345", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user1, 9);
+        Address address2 = new Address("456 Elm St", "City", "State", "54321", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user2, 1);
     
-        user2.addAddress(address2);
         user1.addAddress(address1);
+        user2.addAddress(address2);
         
         Order order = new Order("123", address1, address2);
         
-        Decorator decorator = new OrderDecorator(new OrderSecureDecorator(new OrderExpressDeliveryDecorator(order)));
+        Component decorator = new OrderSecureDecorator(new OrderExpressDeliveryDecorator(order));
 
-        order.setDecorator(decorator);
-        
-        decorator.activeSecure(0);
+        decorator.calculatePrice();
+        decorator.calculateTime();
 
         System.out.println(
             "Dados do pedido:\n" +
@@ -45,7 +44,7 @@ public class RefactosLog {
             "Chance de perder: " + order.getChanceToLose() + "\n" +
             "Status: " + order.getState().getName() + "\n"
         );
-
+        
         new Transport(order).start();
     }
 }

@@ -12,11 +12,12 @@ public class Address {
     private String neighborhood;
     private String phone;
     private String email;
+    private int Region;
 
     private User user;
     
     public Address(String street, String city, String state, String zipCode, String country, String number,
-            String complement, String neighborhood, String phone, String email, User user) {
+            String complement, String neighborhood, String phone, String email, User user, int Region) {
         this.street = street;
         this.city = city;
         this.state = state;
@@ -28,6 +29,7 @@ public class Address {
         this.phone = phone;
         this.email = email;
         this.user = user;
+        this.Region = Region;
     }
 
     public String getStreet() {
@@ -56,6 +58,14 @@ public class Address {
 
     public String getZipCode() {
         return zipCode;
+    }
+
+    public int getRegion() {
+        return Region;
+    }   
+
+    public void setRegion(int Region) {
+        this.Region = Region;
     }
 
     public void setZipCode(String zipCode) {

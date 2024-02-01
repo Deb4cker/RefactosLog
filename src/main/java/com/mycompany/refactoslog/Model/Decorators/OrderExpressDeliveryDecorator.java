@@ -1,18 +1,17 @@
 package com.mycompany.refactoslog.Model.Decorators;
 
 public class OrderExpressDeliveryDecorator extends OrderDecorator{
-    public OrderExpressDeliveryDecorator(Decorator order){
+    public OrderExpressDeliveryDecorator(Component order){
         super(order);
     }
 
     @Override
-    public void activeSecure(float price) {
-        super.activeSecure(price);
+    public float calculatePrice() {
+        return super.calculatePrice() + 20;
     }
 
     @Override
-    public void activeExpressDelivery(float price, int time) {
-        super.activeExpressDelivery(price + 20, time - 5);
+    public float calculateTime() {
+        return super.calculateTime() - 5;
     }
-
 }

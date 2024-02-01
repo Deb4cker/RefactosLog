@@ -1,10 +1,10 @@
 package com.mycompany.refactoslog.Model;
 
-import com.mycompany.refactoslog.Model.Decorators.Decorator;
+import com.mycompany.refactoslog.Model.Decorators.Component;
 import com.mycompany.refactoslog.Model.State.OrderPendingState;
 import com.mycompany.refactoslog.Model.State.OrderState;
 
-public class Order implements Decorator {
+public class Order implements Component  {
     private OrderState state;
     private String code;
     private Address fromAddress;
@@ -14,7 +14,8 @@ public class Order implements Decorator {
     private int estimatedTime;
     private float price;
     private int chanceToLose;
-    private Decorator orderDecorators;
+
+    //private List<compents> products;
 
     public Order(String code, Address fromAddress, Address toAddress) {
         this.state = new OrderPendingState(this);
@@ -68,16 +69,12 @@ public class Order implements Decorator {
         return estimatedTime;
     }
 
-    public void setDecorator(Decorator decorators){
-        this.orderDecorators = decorators;
-    }
-    @Override
     public void activeSecure(float securePrice) {
         setPrice(price + securePrice);
         setChanceToLose(0);
     }
 
-    @Override
+    
     public void activeExpressDelivery(float deliveryPrice, int time){
         setPrice(deliveryPrice);
         setEstimatedTime(estimatedTime - time);
@@ -115,7 +112,16 @@ public class Order implements Decorator {
                 ", estimatedTime=" + estimatedTime +
                 ", price=" + price +
                 ", chanceToLose=" + chanceToLose +
-                ", orderDecorators=" + orderDecorators +
                 '}';
+    }
+
+    @Override
+    public float calculatePrice() {
+        return 10;
+    }
+
+    @Override
+    public float calculateTime() {
+        return 10;
     }
 }
