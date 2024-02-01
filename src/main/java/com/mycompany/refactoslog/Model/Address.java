@@ -126,9 +126,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address [street=" + street + ", city=" + city + ", state=" + state + ", zipCode=" + zipCode
-                + ", country=" + country + ", number=" + number + ", complement=" + complement + ", neighborhood="
-                + neighborhood + ", phone=" + phone + ", email=" + email + "]";
+        return  getStreet() + " " + getNumber() + " " + getState() + " " + getCountry();
     }
 
     @Override

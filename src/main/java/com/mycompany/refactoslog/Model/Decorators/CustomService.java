@@ -1,6 +1,6 @@
 package com.mycompany.refactoslog.Model.Decorators;
 
-public interface Component {
+public interface CustomService {
     float calculatePrice();
-    float calculateTime();
+    int calculateTime();
 }

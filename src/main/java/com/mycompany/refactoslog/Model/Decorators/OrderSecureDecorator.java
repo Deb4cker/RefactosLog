@@ -12,7 +12,7 @@ public class OrderSecureDecorator extends OrderDecorator{
     }
 
     @Override
-    public float calculateTime() {
+    public int calculateTime() {
         return super.calculateTime();
     }
 }

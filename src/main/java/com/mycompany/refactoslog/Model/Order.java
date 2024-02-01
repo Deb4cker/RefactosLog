@@ -1,10 +1,14 @@
 package com.mycompany.refactoslog.Model;
 
-import com.mycompany.refactoslog.Model.Decorators.Component;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mycompany.refactoslog.Model.Composite.Pack;
+import com.mycompany.refactoslog.Model.Decorators.CustomService;
 import com.mycompany.refactoslog.Model.State.OrderPendingState;
 import com.mycompany.refactoslog.Model.State.OrderState;
 
-public class Order implements Component  {
+public class Order implements CustomService  {
     private OrderState state;
     private String code;
     private Address fromAddress;
@@ -14,8 +18,9 @@ public class Order implements Component  {
     private int estimatedTime;
     private float price;
     private int chanceToLose;
+    private float weight;
 
-    //private List<compents> products;
+    private List<Pack> packs = new ArrayList<>();
 
     public Order(String code, Address fromAddress, Address toAddress) {
         this.state = new OrderPendingState(this);
@@ -32,6 +37,34 @@ public class Order implements Component  {
     public void orderCollected(){this.state.orderCollected();}
     public void inTransit() {this.state.inTransit();}
     public void delivered() {this.state.delivered();}
+
+    public void updateWeight(){
+        this.weight = packs.stream().map(Pack::getWeight).reduce(0f, Float::sum);
+    }
+
+    public float getWeight() {
+        updateWeight();
+        return weight;
+    }
+
+    public void addPack(Pack pack){
+        packs.add(pack);
+        updateWeight();
+    }
+
+    public void removePack(Pack pack){
+        packs.remove(pack);
+        updateWeight();
+    }
+
+    public List<Pack> getPacks() {
+        return packs;
+    }
+
+    public void addPacks(List<Pack> packs){
+        this.packs.addAll(packs);
+        updateWeight();
+    }
 
     public OrderState getState() {
         return state;
@@ -102,16 +135,17 @@ public class Order implements Component  {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "state=" + state +
-                ", code='" + code + '\'' +
-                ", fromAddress=" + fromAddress +
-                ", toAddress=" + toAddress +
-                ", sender=" + sender +
-                ", receiver=" + receiver +
-                ", estimatedTime=" + estimatedTime +
-                ", price=" + price +
-                ", chanceToLose=" + chanceToLose +
+        return "Order{" + "\n" +
+                "state: " + state + "\n" +
+                "* code: '" + code + '\'' + "\n" +
+                "* fromAddress: " + fromAddress.toString() + "\n" +
+                "* toAddress: " + toAddress.toString() + "\n" +
+                "* sender: " + sender.getName() + "\n" +
+                "* receiver: " + receiver.getName() + "\n" +
+                "* estimatedTime: " + estimatedTime + " days\n" +
+                "* weight: " + weight + "kg\n" +
+                "* price: $" + price + "\n" +
+                "* chanceToLose: %" + chanceToLose + "\n" +
                 '}';
     }
 
@@ -121,7 +155,7 @@ public class Order implements Component  {
     }
 
     @Override
-    public float calculateTime() {
+    public int calculateTime() {
         return 10;
     }
 }

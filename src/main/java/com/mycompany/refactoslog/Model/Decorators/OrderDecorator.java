@@ -1,10 +1,10 @@
 package com.mycompany.refactoslog.Model.Decorators;
 
-public abstract class OrderDecorator implements Component{
+public abstract class OrderDecorator implements CustomService{
 
-    private final Component component;
+    private CustomService component;
 
-    public OrderDecorator(Component component){
+    public OrderDecorator(CustomService component){
         this.component = component;
     }
 
@@ -14,7 +14,7 @@ public abstract class OrderDecorator implements Component{
     }
 
     @Override
-    public float calculateTime() {
+    public int calculateTime() {
         return component.calculateTime();
     }
 }
