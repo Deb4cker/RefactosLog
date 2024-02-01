@@ -1,4 +1,4 @@
-package com.mycompany.refactoslog.Model.State;
+package com.mycompany.refactoslog.State;
 
 import com.mycompany.refactoslog.Model.Order;
 

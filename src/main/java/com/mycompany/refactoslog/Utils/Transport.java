@@ -1,8 +1,8 @@
 package com.mycompany.refactoslog.Utils;
 
 import com.mycompany.refactoslog.Model.Order;
-import com.mycompany.refactoslog.Model.State.OrderCollectedState;
-import com.mycompany.refactoslog.Model.State.OrderPendingState;
+import com.mycompany.refactoslog.State.OrderCollectedState;
+import com.mycompany.refactoslog.State.OrderPendingState;
 
 public class Transport extends Thread{
 

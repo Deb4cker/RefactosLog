@@ -1,7 +1,7 @@
 package com.mycompany.refactoslog.Services.TotalPrice;
 
 import com.mycompany.refactoslog.Model.Order;
-import com.mycompany.refactoslog.Model.Decorators.CustomService;
+import com.mycompany.refactoslog.Decorators.CustomService;
 import com.mycompany.refactoslog.Services.Shipping.ShippingCostCalculator;
 import com.mycompany.refactoslog.Services.Shipping.ShippingCostCalculatorAdapter;
 

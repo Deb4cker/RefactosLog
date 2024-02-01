@@ -3,10 +3,10 @@ package com.mycompany.refactoslog.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mycompany.refactoslog.Model.Composite.Pack;
-import com.mycompany.refactoslog.Model.Decorators.CustomService;
-import com.mycompany.refactoslog.Model.State.OrderPendingState;
-import com.mycompany.refactoslog.Model.State.OrderState;
+import com.mycompany.refactoslog.Composite.Pack;
+import com.mycompany.refactoslog.Decorators.CustomService;
+import com.mycompany.refactoslog.State.OrderPendingState;
+import com.mycompany.refactoslog.State.OrderState;
 
 public class Order implements CustomService  {
     private OrderState state;

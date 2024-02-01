@@ -1,4 +1,4 @@
-package com.mycompany.refactoslog.Model.Composite;
+package com.mycompany.refactoslog.Composite;
 
 public class Item implements Pack{
     private String name;

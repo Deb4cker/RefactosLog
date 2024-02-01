@@ -1,4 +1,4 @@
-package com.mycompany.refactoslog.Model.Composite;
+package com.mycompany.refactoslog.Composite;
 
 import java.util.ArrayList;
 import java.util.List;

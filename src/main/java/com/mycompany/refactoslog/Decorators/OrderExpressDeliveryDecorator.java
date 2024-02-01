@@ -1,4 +1,4 @@
-package com.mycompany.refactoslog.Model.Decorators;
+package com.mycompany.refactoslog.Decorators;
 
 public class OrderExpressDeliveryDecorator extends OrderDecorator{
     public OrderExpressDeliveryDecorator(CustomService order){
