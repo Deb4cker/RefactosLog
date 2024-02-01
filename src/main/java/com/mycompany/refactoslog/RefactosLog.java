@@ -32,21 +32,25 @@ public class RefactosLog {
         
         Order order = new Order("123", address1, address2);
         order.addPacks(createPacks());
-        
-        CustomService decorator = new OrderSecureDecorator(new OrderExpressDeliveryDecorator(order));
-        
+
+        // * Voce pode descomentar para testar os diferentes serviços
+
+        CustomService orderServices = new OrderSecureDecorator(new OrderExpressDeliveryDecorator(order)); //Both services
+        //CustomService orderServices = new OrderSecureDecorator(order); //Only secure
+        //CustomService orderServices = new OrderExpressDeliveryDecorator(order); //Only express
+        //CustomService orderServices = order; //No service
+
         var costCalculator = new TotalPriceCalculatorAdapter(new TotalPriceCalculator());
-        float totalPrice = costCalculator.calculateTotal(order, decorator);
+        float totalPrice = costCalculator.calculateTotal(order, orderServices);
         
-        order.setEstimatedTime(decorator.calculateTime());
+        order.setEstimatedTime(orderServices.calculateTime());
         order.setPrice(totalPrice);
-        order.setChanceToLose(decorator.IncreaseSecurity());
+        order.setChanceToLose(orderServices.IncreaseSecurity());
 
         System.out.println(order.toString());
 
         new Transport(order).deliver();
     }
-
 
     public static List<Pack> createPacks(){
 

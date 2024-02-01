@@ -2,7 +2,7 @@ package com.mycompany.refactoslog.Decorators;
 
 public class OrderSecureDecorator extends OrderDecorator{
 
-    public OrderSecureDecorator(OrderDecorator decorator) {
+    public OrderSecureDecorator(CustomService decorator) {
         super(decorator);
     }
 
