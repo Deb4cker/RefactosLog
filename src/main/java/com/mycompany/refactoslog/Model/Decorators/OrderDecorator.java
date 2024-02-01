@@ -9,6 +9,11 @@ public abstract class OrderDecorator implements CustomService{
     }
 
     @Override
+    public int IncreaseSecurity() {
+        return component.IncreaseSecurity();
+    }
+
+    @Override
     public float calculatePrice() {
         return component.calculatePrice();
     }

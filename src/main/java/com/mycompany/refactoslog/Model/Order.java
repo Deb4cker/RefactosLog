@@ -158,4 +158,9 @@ public class Order implements CustomService  {
     public int calculateTime() {
         return 10;
     }
+
+    @Override
+    public int IncreaseSecurity() {
+        return 50;
+    }
 }

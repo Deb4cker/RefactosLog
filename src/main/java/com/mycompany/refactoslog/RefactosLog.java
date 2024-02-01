@@ -40,6 +40,7 @@ public class RefactosLog {
         
         order.setEstimatedTime(decorator.calculateTime());
         order.setPrice(totalPrice);
+        order.setChanceToLose(decorator.IncreaseSecurity());
 
         System.out.println(order.toString());
 

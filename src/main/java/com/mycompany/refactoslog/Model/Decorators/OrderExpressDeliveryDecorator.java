@@ -14,4 +14,9 @@ public class OrderExpressDeliveryDecorator extends OrderDecorator{
     public int calculateTime() {
         return super.calculateTime() - 5;
     }
+
+    @Override
+    public int IncreaseSecurity() {
+        return super.IncreaseSecurity();
+    }
 }
