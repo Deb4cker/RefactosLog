@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.refactoslog;
 
 import java.util.List;
+import java.util.Random;
 
 import com.mycompany.refactoslog.Model.Address;
 import com.mycompany.refactoslog.Model.Order;
@@ -13,23 +10,22 @@ import com.mycompany.refactoslog.Model.Composite.Box;
 import com.mycompany.refactoslog.Model.Composite.Item;
 import com.mycompany.refactoslog.Model.Composite.Pack;
 import com.mycompany.refactoslog.Model.Decorators.*;
-import com.mycompany.refactoslog.Model.State.OrderCollectedState;
-import com.mycompany.refactoslog.Model.State.OrderPendingState;
 import com.mycompany.refactoslog.Services.TotalPrice.TotalPriceCalculator;
 import com.mycompany.refactoslog.Services.TotalPrice.TotalPriceCalculatorAdapter;
+import com.mycompany.refactoslog.Utils.Transport;
 
-/**
- *
- * @author nicolas
- */
 public class RefactosLog {
 
     public static void main(String[] args) {
+        Random random = new Random();
         User user1 = new User("John", "john@example.com", "password", "12345678901");
         User user2 = new User("Jane", "jane@example.com", "password123", "9876543210");
 
-        Address address1 = new Address("123 Main St", "City", "State", "12345", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user1, 9);
-        Address address2 = new Address("456 Elm St", "City", "State", "54321", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user2, 1);
+        int region1 = random.nextInt(11);
+        int region2 = random.nextInt(11);
+
+        Address address1 = new Address("123 Main St", "City", "State", "12345", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user1, region1);
+        Address address2 = new Address("456 Elm St", "City", "State", "54321", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user2, region2);
     
         user1.addAddress(address1);
         user2.addAddress(address2);
@@ -47,7 +43,7 @@ public class RefactosLog {
 
         System.out.println(order.toString());
 
-        new Transport(order).start();
+        new Transport(order).deliver();
     }
 
 
@@ -75,49 +71,5 @@ public class RefactosLog {
 
         //O pedido é 2 caixas e 3 itens soltos
         return List.of(b1, b2, i3, i4, i5);
-    }
-}
-
-class Transport extends Thread{
-
-    private boolean isRunning = false;
-    private Order order;
-
-    public Transport(CustomService order){
-        this.order = order instanceof Order? (Order)order : null;
-    }
-
-    @Override
-    public void run() {
-        if (order != null) {
-            
-            isRunning = true;
-            while (isRunning) {
-                
-                var orderState = order.getState();
-                if(orderState instanceof OrderPendingState){
-                    order.orderCollected();
-                    System.out.println(orderState.getName());
-                }
-                else if (orderState instanceof OrderCollectedState) {
-                    order.inTransit();
-                    System.out.println(orderState.getName());
-                } else {
-                    order.delivered();
-                    System.out.println(orderState.getName());
-                    shutDown();
-                }
-                
-                try {
-                    Thread.sleep(order.getEstimatedTime() * 1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public void shutDown(){
-        isRunning = false;
     }
 }
