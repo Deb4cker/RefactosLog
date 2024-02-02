@@ -5,6 +5,7 @@ import java.util.Random;
 import com.mycompany.refactoslog.Model.Order;
 import com.mycompany.refactoslog.State.OrderCollectedState;
 import com.mycompany.refactoslog.State.OrderPendingState;
+import com.mycompany.refactoslog.Visitor.ConcreteVisitor;
 
 public class Transport extends Thread{
 
@@ -31,6 +32,9 @@ public class Transport extends Thread{
                 order.inTransit();
                 System.out.println(orderState.getName());
             } else {
+                ConcreteVisitor visitor = new ConcreteVisitor();
+                var address = order.getFromAddress();
+                visitor.generateDeliveryReceipt(address);
                 order.delivered();
                 System.out.println(orderState.getName());
                 shutDown();

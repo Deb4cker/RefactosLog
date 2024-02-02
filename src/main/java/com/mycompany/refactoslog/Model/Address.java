@@ -1,6 +1,8 @@
 package com.mycompany.refactoslog.Model;
 
-public class Address {
+import com.mycompany.refactoslog.Visitor.Visitor;
+
+public abstract class Address {
     
     private String street;
     private String city;
@@ -208,5 +210,5 @@ public class Address {
         return true;
     }   
 
-    
+    public abstract String accept(Visitor visitor);
 }
