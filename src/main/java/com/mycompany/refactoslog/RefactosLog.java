@@ -3,16 +3,13 @@ package com.mycompany.refactoslog;
 import java.util.List;
 import java.util.Random;
 
-import com.mycompany.refactoslog.Model.Company;
-import com.mycompany.refactoslog.Model.Order;
-import com.mycompany.refactoslog.Model.Residence;
-import com.mycompany.refactoslog.Model.User;
+import com.mycompany.refactoslog.Model.*;
 import com.mycompany.refactoslog.Composite.Box;
 import com.mycompany.refactoslog.Composite.Item;
 import com.mycompany.refactoslog.Composite.Pack;
 import com.mycompany.refactoslog.Decorators.*;
-import com.mycompany.refactoslog.Services.TotalPrice.TotalPriceCalculator;
-import com.mycompany.refactoslog.Services.TotalPrice.TotalPriceCalculatorAdapter;
+import com.mycompany.refactoslog.AdaptableServices.TotalPrice.TotalPriceCalculator;
+import com.mycompany.refactoslog.AdaptableServices.TotalPrice.TotalPriceCalculatorAdapter;
 import com.mycompany.refactoslog.Utils.Transport;
 
 public class RefactosLog {
@@ -25,8 +22,8 @@ public class RefactosLog {
         int region1 = random.nextInt(11);
         int region2 = random.nextInt(11);
 
-        Residence address1 = new Residence("123 Main St", "City", "State", "12345", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user1, region1);
-        Company address2 = new Company("456 Elm St", "City", "State", "54321", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user2, region2);
+        Address address1 = new Residence("123 Main St", "City", "State", "12345", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user1, region1);
+        Address address2 = new Company("456 Elm St", "City", "State", "54321", "Country", "Building", "Floor", "Apartment", "Landmark", "Postal Code", user2, region2);
     
         user1.addAddress(address1);
         user2.addAddress(address2);

@@ -13,6 +13,16 @@ public class Box implements Pack{
         this.name = name;
     }
 
+    public void updateWeight(){
+        this.weight = packs.stream().map(Pack::getWeight).reduce(0f, Float::sum);
+    }
+
+    @Override
+    public float getWeight() {
+        updateWeight();
+        return weight;
+    }
+
     public void add(Pack pack){
         packs.add(pack);
     }
@@ -37,13 +47,4 @@ public class Box implements Pack{
         this.name = name;
     }
 
-    public void updateWeight(){
-        this.weight = packs.stream().map(Pack::getWeight).reduce(0f, Float::sum);
-    }
-
-    @Override
-    public float getWeight() {
-        updateWeight();
-        return weight;
-    }
 }

@@ -1,4 +1,4 @@
-package com.mycompany.refactoslog.Services.Shipping;
+package com.mycompany.refactoslog.AdaptableServices.Shipping;
 
 public class ShippingCostCalculator {
 

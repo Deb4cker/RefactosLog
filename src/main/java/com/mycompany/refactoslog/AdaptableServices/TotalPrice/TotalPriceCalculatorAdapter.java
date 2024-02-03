@@ -1,4 +1,4 @@
-package com.mycompany.refactoslog.Services.TotalPrice;
+package com.mycompany.refactoslog.AdaptableServices.TotalPrice;
 
 import com.mycompany.refactoslog.Model.Order;
 import com.mycompany.refactoslog.Decorators.CustomService;

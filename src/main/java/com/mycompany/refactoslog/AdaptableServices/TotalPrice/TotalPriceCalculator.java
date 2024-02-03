@@ -1,9 +1,9 @@
-package com.mycompany.refactoslog.Services.TotalPrice;
+package com.mycompany.refactoslog.AdaptableServices.TotalPrice;
 
 import com.mycompany.refactoslog.Model.Order;
 import com.mycompany.refactoslog.Decorators.CustomService;
-import com.mycompany.refactoslog.Services.Shipping.ShippingCostCalculator;
-import com.mycompany.refactoslog.Services.Shipping.ShippingCostCalculatorAdapter;
+import com.mycompany.refactoslog.AdaptableServices.Shipping.ShippingCostCalculator;
+import com.mycompany.refactoslog.AdaptableServices.Shipping.ShippingCostCalculatorAdapter;
 
 public class TotalPriceCalculator {
 
